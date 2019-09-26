@@ -5,16 +5,29 @@
   </head>
   <body>
     <h2>A simple HTML page!</h2>
-    <button type="button" onclick="addHeader()">Click me!</button>
-    <div id="root"></div>
+    <button type="button" onclick="getRick()">Click me!</button>
+    <div id="root">
+      <img src="" id="image" />
+    </div>
 
     <script type="application/javascript">
-      function addHeader() {
-        console.log("Yo!!");
-        const h = document.createElement("h");
-        h.innerHTML = "Hello!";
-        const div = document.getElementById("root");
-        div.appendChild(h);
+      function getRick() {
+        const Http = new XMLHttpRequest();
+        Http.open("GET", "http://localhost:8080/rick");
+        Http.send();
+
+        Http.onreadystatechange = e => {
+          console.log("Request State: " + Http.readyState);
+          console.log("Request status: " + Http.status);
+
+          if (Http.readyState == 4 && Http.status == 200) {
+            console.log("Good status!");
+            const img = document.getElementById("image");
+            img.width = 1000;
+            img.src = Http.responseText;
+            console.log(Http);
+          }
+        };
       }
     </script>
   </body>
