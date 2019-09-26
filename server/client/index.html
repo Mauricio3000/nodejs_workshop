@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FIU UPE NodeJS Demo</title>
+  </head>
+  <body>
+    <h2>A simple HTML page!</h2>
+    <button type="button" onclick="addHeader()">Click me!</button>
+    <div id="root"></div>
+
+    <script type="application/javascript">
+      function addHeader() {
+        console.log("Yo!!");
+        const h = document.createElement("h");
+        h.innerHTML = "Hello!";
+        const div = document.getElementById("root");
+        div.appendChild(h);
+      }
+    </script>
+  </body>
+</html>
