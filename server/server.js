@@ -13,6 +13,13 @@ app.get('/rick', (req, res) => {
 	res.send("https://screenrant.com/wp-content/uploads/2017/07/Rick-and-Morty.jpg");
 });
 
+//--- Our first end point
+app.get('/rs', (req, res) => {
+	res.status(200);
+	res.send("https://static2.srcdn.com/wordpress/wp-content/uploads/2017/03/Ren-and-Stimpy.jpg");
+});
+
+
 app.listen({ port: port }, () => {
     console.log("Server ready at http://localhost:" + port)
 })
