@@ -7,6 +7,10 @@
     <h2>A simple HTML page!</h2>
     <button type="button" onclick="getRick()">Click me!</button>
     <button type="button" onclick="getRS()">Click me!</button>
+    <div>
+      <input type="text" id="text" />
+      <button type="button" onclick="sendText()">Send!</button>
+    </div>
     <div id="root">
       <img src="" id="image" />
     </div>
@@ -38,6 +42,15 @@
             img.src = Http.responseText;
           }
         };
+      }
+
+      function sendText() {
+        const text = document.getElementById("text");
+        const Http = new XMLHttpRequest();
+        Http.open("POST", "http://localhost:8080/text", true);
+        Http.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+        Http.send(JSON.stringify({ text: text.value }));
+        text.value = "";
       }
     </script>
   </body>
